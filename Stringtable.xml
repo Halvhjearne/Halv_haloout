@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="Halv Translations">
+	<Package name="Missing">
+		<Container name="Halo jump fix">
+			<Key ID="STR_HALO_OPEN_CHUTE">
+				<Original>Open Chute</Original>
+				<English>Open Chute</English>
+				<Czech>Otevřít Padák</Czech>
+				<French>Ouvrir Chute</French>
+				<German>Fallschirm öffnen</German>
+				<Italian>Aprire Chute</Italian>
+				<Polish>Otwórz Chute</Polish>
+				<Portuguese>Abrir Chute</Portuguese>
+				<Russian>Открыть парашют</Russian>
+				<Spanish>Abrir paracaidas</Spanish>
+			</Key>
+		</Container>
+	</Package>
+</Project>
+
