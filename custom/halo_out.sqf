@@ -13,9 +13,10 @@ while{alive player}do{
 	_vehicle = vehicle player;
 	if(player != _vehicle)then{
 		_pos = getPosATL _vehicle;
-		_ischute = _vehicle isKindOf "Parachute_base";
-		_isnotpilot = {assignedVehicleRole player isEqualTo _x}count [["driver"],["Turret",[0]]] < 1;
-		if(_pos select 2 > _haloheight && !_ischute && _isnotpilot)then{
+		_chute = _vehicle isKindOf "Parachute_base";
+		_notpilot = {assignedVehicleRole player isEqualTo _x}count [["driver"],["Turret",[0]]] < 1;
+		_notalone = count(crew _vehicle) > 1;
+		if(_pos select 2 > _haloheight && !_chute && _notpilot && _notalone)then{
 			if(_haloaction < 0)then{
 				_haloaction = _vehicle addAction["<img size='1.5'image='\a3\Ui_f\data\IGUI\Cfg\Actions\eject_ca.paa'/> <t color='#0096ff'>HALO</t><t > </t><t color='#00CC00'>Eject</t>","custom\eject.sqf",_vehicle, -10, true, true, "", ""];
 			};
