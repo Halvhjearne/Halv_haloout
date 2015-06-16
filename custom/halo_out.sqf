@@ -13,7 +13,7 @@ while{alive player}do{
 	_vehicle = vehicle player;
 	if(player != _vehicle)then{
 		_pos = getPosATL _vehicle;
-		_chute = _vehicle isKindOf "Parachute_base";
+		_chute = _vehicle isKindOf "ParachuteBase";
 		_notpilot = {assignedVehicleRole player isEqualTo _x}count [["driver"],["Turret",[0]]] < 1;
 		_notalone = count(crew _vehicle) > 1;
 		if(_pos select 2 > _haloheight && !_chute && _notpilot && _notalone)then{
