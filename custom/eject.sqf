@@ -1,6 +1,8 @@
 /*
 	halo from vehicles
 	by Halv
+	
+	Copyright (C) 2015  Halvhjearne > README.md
 */
 
 _id = _this select 2;

@@ -1,6 +1,8 @@
 /*
 	halo from vehicles
 	by Halv
+	
+	Copyright (C) 2015  Halvhjearne > README.md
 */
 
 //this is the height (in meters) above ground the player needs to be, before the halo scroll action becomes available. default 250 
