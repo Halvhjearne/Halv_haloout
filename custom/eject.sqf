@@ -16,9 +16,15 @@ sleep 1;
 
 _action = player addAction [localize "STR_HALO_OPEN_CHUTE",{HALV_openchute = true;}];
 
-waitUntil{sleep 1;(!isNil "HALV_openchute" || (getPosATL player)select 2 <= 10)};
+waitUntil{sleep 1;(!isNil "HALV_openchute" || !alive player || isTouchingGround player)};
+
 player removeAction _action;
-HALV_openchute = nil;
+
+if(isNil "HALV_openchute")then{
+	player setDammage 1;
+}else{
+	HALV_openchute = nil;
+};
 
 private "_chute";
 
@@ -26,14 +32,12 @@ _pos = getPosATL player;
 
 if (_pos select 2 < 10) then{
 	_chute = createVehicle ["NonSteerable_Parachute_F", _pos, [], 0, "FLY"];
-	_chute setPosATL _pos;
-	_chute setDir getDir player;
 }else{
 	_chute = createVehicle ["Steerable_Parachute_F", _pos, [], 0, "CAN_COLLIDE"];
-	_chute setPosATL _pos;
-	_chute setDir getDir player;
 };
 
+_chute setDir getDir player;
+_chute setPosATL _pos;
 _chute disableCollisionWith player;
 player moveInDriver _chute;
 _chute setVelocity [0,0,0];
