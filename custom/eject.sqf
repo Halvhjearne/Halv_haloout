@@ -38,6 +38,8 @@ if (_pos select 2 < 10) then{
 	_chute = createVehicle ["Steerable_Parachute_F", _pos, [], 0, "CAN_COLLIDE"];
 };
 
+sleep 0.2;
+
 _chute setDir getDir player;
 _chute setPosATL _pos;
 _chute disableCollisionWith player;
