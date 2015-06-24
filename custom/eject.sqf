@@ -9,10 +9,8 @@ _id = _this select 2;
 _vehicle = _this select 3;
 _vehicle removeAction _id;
 
-if(player == driver _vehicle)exitWith{titleText["Cant HALO Jump as pilot ...","PLAIN DOWN"];};
-
 moveOut player;
-waitUntil{player != _vehicle};
+waitUntil{!(player isEqualTo _vehicle)};
 
 sleep 1;
 
@@ -51,7 +49,7 @@ waitUntil {isTouchingGround player || !alive player};
 if (!isNull _chute) then{
 	_chute setVelocity [0,0,0];
 	sleep 0.5;
-	if (vehicle player == _chute) then { moveOut player };
+	if ((vehicle player) isEqualTo _chute) then { moveOut player };
 	sleep 1.5;
 	deleteVehicle _chute;
 };
