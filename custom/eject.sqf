@@ -10,18 +10,19 @@ _vehicle = _this select 3;
 _vehicle removeAction _id;
 
 moveOut player;
-waitUntil{!(player isEqualTo _vehicle)};
+waitUntil{(!(vehicle player isEqualTo _vehicle) && animationState player == "halofreefall_non")};
 
 sleep 1;
-
+HALV_openchute = false;
 _action = player addAction [localize "STR_HALO_OPEN_CHUTE",{HALV_openchute = true;}];
 
-waitUntil{sleep 1;(!isNil "HALV_openchute" || !alive player || isTouchingGround player)};
+waitUntil{sleep 1;(HALV_openchute || !(alive player) || isTouchingGround player)};
 
 player removeAction _action;
 
-if(isNil "HALV_openchute")then{
+if !(HALV_openchute)then{
 	player setDammage 1;
+	HALV_openchute = nil;
 }else{
 	HALV_openchute = nil;
 };
@@ -43,6 +44,10 @@ _chute setPosATL _pos;
 _chute disableCollisionWith player;
 player moveInDriver _chute;
 _chute setVelocity [0,0,0];
+waitUntil{vehicle player isEqualTo _chute};
+if (animationState player != "para_pilot") then{
+	player switchMove "para_pilot";
+};
 
 waitUntil {isTouchingGround player || !alive player};
 
