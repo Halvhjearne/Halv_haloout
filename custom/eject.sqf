@@ -20,12 +20,12 @@ waitUntil{sleep 1;(HALV_openchute || !(alive player) || isTouchingGround player)
 
 player removeAction _action;
 
-if !(HALV_openchute)then{
+if !(HALV_openchute)exitWith{
 	player setDammage 1;
 	HALV_openchute = nil;
-}else{
-	HALV_openchute = nil;
 };
+
+HALV_openchute = nil;
 
 private "_chute";
 
